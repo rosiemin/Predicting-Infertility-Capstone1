@@ -10,6 +10,8 @@ df_repo = sasxport.get('RHQ_I.XPT')
 df_smoke = sasxport.get('SMQ_I.XPT')
 df_sexed = sasxport.get('SXQ_I.XPT')
 df_weight = sasxport.get('WHQ_I.XPT')
+df_body = sasxport.get('BMX_I.XPT')
+
 
 write.csv(df_demo, file = "DEMO_I.csv")
 write.csv(df_alc, file = "ALQ_I.csv", row.names = FALSE)
@@ -19,3 +21,5 @@ write.csv(df_repo, file = "RHQ_I.csv", row.names = FALSE)
 write.csv(df_smoke, file = "SMQ_I.csv", row.names = FALSE)
 write.csv(df_sexed, file = "SXQ_I.csv", row.names = FALSE)
 write.csv(df_weight, file = "WHQ_I.csv", row.names = FALSE)
+write.csv(df_body, file = "BMX_I.csv", row.names = FALSE)
+
