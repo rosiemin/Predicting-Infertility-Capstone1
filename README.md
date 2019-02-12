@@ -1,15 +1,16 @@
 **********************************************
-Predicting Infertility from Self-Reported Data
+# Predicting Infertility from Self-Reported Data
 **********************************************
 
-:Author: Rosie M Martinez, ScD, MPH
-
-:Website: https://github.com/rosiemin/dsi-capstone1
+#### Author: Rosie M Martinez, ScD, MPH
+#### Website: https://github.com/rosiemin/dsi-capstone1
 
 # Background
 Human infertility is a complex disorder that is becoming more prevalent. In 2010, an estimated 48.5 million couples worldwide were unable to have a child after five years of trying to conceive. Worldwide 1 in 6 couples have troubles getting pregnant or sustaining their pregnancy and approximately 6.9 million American women struggle with issues of infertility. According to the National Center for Health Statistics, in the United States 12.1% of women aged 15-44 have impaired fecundity (the ability to have kids) and 6.7% of married women in the same age range are infertile.
+<p align="center">
+<img src="images/fertility.jpg">
+</p>
 
-![](images/fertility.jpg)
 [ source](https://www.fertility.stanfordchildrens.org)
 
 Infertility is influenced by a broad range of physical, anatomical, hormonal, genetic and environmental stressors. About 1/3 of infertility is attributed to female issues, 1/3 is attributed to male issues, and 1/3 is attributed to unknown factors. The burden of infertility high and remains an ongoing global reproductive health issue.
