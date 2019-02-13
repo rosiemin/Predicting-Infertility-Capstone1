@@ -91,10 +91,11 @@ def clean_data(df):
     df.head()
     df.info()
     print(df.shape) #(1581, 31)
-
-    df_y = df['fert_stat'].values
+    df_predum = df
+    df_y = df['fert_stat'].replace({'yes': 1, 'no': 0})
     df_X = df.drop('fert_stat', axis = 1)
     df_X = pd.get_dummies(df_X)
-    col_remove = ['thyroid_no', 'sti_no', 'piv_no', 'irr_periods_no', 'physical_activity_none', 'smoke_never', 'eth_white']
-    df_X = df_X.drop(col_remove, axis = 1).values
-    return df_X, df_y
+    df_dumms = pd.get_dummies(df_predum)
+    col_remove = ['id','thyroid_no', 'sti_no', 'piv_no', 'irr_periods_no', 'physical_activity_none', 'smoke_never', 'eth_white']
+    df_X = df_X.drop(col_remove, axis = 1)
+    return df_X, df_y, df_predum, df_dumms

@@ -46,6 +46,38 @@ For the purposes of this analysis I have excluded women who have had a hysterect
 
 # Analysis
 
+'''                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:              fert_stat   No. Observations:                 1011
+Model:                          Logit   Df Residuals:                      993
+Method:                           MLE   Df Model:                           17
+Date:                Tue, 12 Feb 2019   Pseudo R-squ.:                 0.04684
+Time:                        17:12:26   Log-Likelihood:                -333.50
+converged:                       True   LL-Null:                       -349.89
+                                        LLR p-value:                   0.01203
+==============================================================================================
+                                 coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------------------
+const                         -4.1921      0.603     -6.949      0.000      -5.375      -3.010
+age                            0.0429      0.011      3.735      0.000       0.020       0.065
+alcohol                        0.0282      0.018      1.593      0.111      -0.006       0.063
+bmi                            0.0152      0.013      1.150      0.250      -0.011       0.041
+eth_african_american          -0.1330      0.298     -0.446      0.656      -0.718       0.452
+eth_asian                     -0.0125      0.376     -0.033      0.974      -0.749       0.724
+eth_mexican_hispanic          -0.2306      0.326     -0.708      0.479      -0.869       0.408
+eth_mixed_race                 0.4088      0.497      0.823      0.410      -0.565       1.382
+eth_other_hispanic             0.0537      0.337      0.159      0.874      -0.607       0.715
+thyroid_yes                    0.0675      0.340      0.199      0.843      -0.598       0.733
+sti_yes                       -0.1457      0.309     -0.472      0.637      -0.751       0.460
+piv_yes                        1.1658      0.401      2.904      0.004       0.379       1.952
+irr_periods_yes               -0.4636      0.305     -1.521      0.128      -1.061       0.134
+physical_activity_moderate    -0.0574      0.332     -0.173      0.863      -0.707       0.593
+physical_activity_some         0.1707      0.230      0.741      0.459      -0.281       0.622
+physical_activity_vigorous     0.6370      0.521      1.223      0.221      -0.384       1.658
+smoke_current                 -0.3359      0.313     -1.073      0.283      -0.949       0.278
+smoke_former                   0.0735      0.307      0.239      0.811      -0.529       0.676
+=============================================================================================='''
+
 # Discussion
 
 # Strengths & Limitations
