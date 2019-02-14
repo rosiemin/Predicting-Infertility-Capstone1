@@ -99,7 +99,7 @@ Because age is significant, we can look at the exp(0.0595) = 1.06
 **The recall from my final hold out was 0.886**
 
 <p align="center">
-<img src="images/confusion_mat.png" width=450px><img src="images/confusion_mat_holdout.png" width=450px>
+<img src="images/confusion_mat.png" width=420px><img src="images/confusion_mat_holdout.png" width=420px>
 </p>
 
 
