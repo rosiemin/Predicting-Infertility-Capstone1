@@ -29,8 +29,9 @@ The clinical diagnosis of infertility is defined as the failure to conceive with
 The National Health and Nutrition Examination Survey, or NHANES as it is better known, is a program designed to assess the health and nutritional status of adults and children in the United States. The survey examines a nationally representative sample of about 5,000 persons each year. These persons are located in counties across the country, 15 of which are visited each year. The NHANES interview includes demographic, socioeconomic, dietary, and health-related questions. The examination component consists of medical, dental, and physiological measurements, as well as laboratory tests administered by highly trained medical personnel.
 
 While we infertility is not only a “female” issue, for the purposes of this capstone, I will be focusing on infertility among women. In this data, there are many different datasets based on questionnaires given, but I will be focusing my project on those questions dealing with the known risk factors of infertility, including
-
-![](images/riskfactors.png)
+<p align="center">
+<img src="images/riskfactors.png" width=500px>
+</p>
 
 * Age
 * Race/Ethnicity
@@ -57,14 +58,14 @@ Those participants that said “Yes” to one of either of the two questions are
 
 #### Continuous Variables: Age, BMI, Alcohol
 <p align="center">
-<img src="images/pairplot.png" width=500px>
-<img src="images/boxplot_by.png" width=450px>
+<img src="images/pairplot.png" width=600px>
+<img src="images/boxplot_by.png" width=600px>
 </p>
 
 
 #### Categorical Variables: STIs (yes/no), Irregular Periods (yes/no), Smoking Status (Current/Former/Never)
 <p align="center">
-<img src="images/proportionalcats.png" width=500px>
+<img src="images/proportionalcats.png" width=600px>
 </p>
 
 ### Model Training:
@@ -86,6 +87,7 @@ Former Smoke        0.7921     0.109
 Because age is significant, we can look at the exp(0.0595) = 1.06
 
 ** Holding all else constant, on average, with a one year increase in age, the odds increases by 6% among those that are infertile compared to those that are fertile.**
+
 <p align="center">
 <img src="images/ROC_final.png" width=400px><img src="images/ROC_holdout.png" width=400px>
 </p>
@@ -97,7 +99,7 @@ Because age is significant, we can look at the exp(0.0595) = 1.06
 **The recall from my final hold out was 0.886**
 
 <p align="center">
-<img src="images/confusion_mat.png" width=400px><img src="images/confusion_mat_holdout.png" width=400px>
+<img src="images/confusion_mat.png" width=500px><img src="images/confusion_mat_holdout.png" width=500px>
 </p>
 
 
