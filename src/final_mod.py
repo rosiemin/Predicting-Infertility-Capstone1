@@ -20,62 +20,61 @@ plt.style.use('ggplot')
 df, test_df = md.open_data()
 X, y, df_nodum, df_full = clean.clean_data(df)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, stratify = y)
 
 
 
 #### TESTING TEST DATA FROM TRAIN TEST SPLIT 2
-X_train_3 = X_train.drop(['eth_african_american', 'eth_asian',
+X_train_3 = X.drop(['eth_african_american', 'eth_asian',
       'eth_mexican_hispanic', 'eth_mixed_race', 'eth_other_hispanic', 'thyroid_yes', 'physical_activity_some', 'physical_activity_moderate','physical_activity_vigorous','piv_yes'], axis = 1)
 
-X_test_1 = X_test.drop(['eth_african_american', 'eth_asian',
-      'eth_mexican_hispanic', 'eth_mixed_race', 'eth_other_hispanic', 'thyroid_yes', 'physical_activity_some', 'physical_activity_moderate','physical_activity_vigorous','piv_yes'], axis = 1)
+# X_test_1 = X_test.drop(['eth_african_american', 'eth_asian',
+#       'eth_mexican_hispanic', 'eth_mixed_race', 'eth_other_hispanic', 'thyroid_yes', 'physical_activity_some', 'physical_activity_moderate','physical_activity_vigorous','piv_yes'], axis = 1)
 
 
 #std train data here
 model_final = LogisticRegression(class_weight='balanced')
-model_final.fit(X_train_3.values, y_train.values)
+model_final.fit(X_train_3.values, y.values)
 
 # use same scaler to transform test X
 
-probs = model_final.predict_proba(X_test_1)[:, 1]
-probabilities = np.where(probs >= 0.4, 1, 0)
-probs1 = model_final.predict_proba(X_train_3)[:, 1]
-probabilities1 = np.where(probs1 >= 0.4, 1, 0)
-
-accuracy_final = metrics.accuracy_score(y_test, probabilities)
-precision_final = metrics.precision_score(y_test, probabilities)
-recall_final = metrics.recall_score(y_test, probabilities)
-recall_tr = metrics.recall_score(y_train, probabilities1)
-f1_score_final = metrics.f1_score(y_test, probabilities)
-
-fpr, tpr, thresholds = metrics.roc_curve(y_test, probs)
-fpr1, tpr1, thresholds1 = metrics.roc_curve(y_train, probs1)
-
-auc_final = metrics.roc_auc_score(y_test, probs)
-auc_train = metrics.roc_auc_score(y_train, probs1)
-
-fig = plt.figure(figsize=(10,8))
-ax = fig.add_subplot(111)
-ax.plot([0, 1], [0, 1], linestyle='--', lw=2, color='k',
-         label='Luck')
-ax.plot(fpr, tpr, color='salmon', lw=2, label='Test Model')
-ax.plot(fpr1, tpr1, color='navy', lw=2, label='Train Model')
-
-ax.set_xlabel("False Positive Rate", fontsize=20)
-ax.set_ylabel("True Postive Rate", fontsize=20)
-ax.set_title("ROC curve: Final Model", fontsize=24)
-ax.text(0.15, 0.65, " ".join(["AUC:",str(auc_final.round(3))]), fontsize=20, color = 'salmon')
-ax.text(0.15, 0.6, " ".join(['AUC:',str(auc_train.round(3))]), fontsize=20, color = 'navy')
-ax.legend(fontsize=24)
-
-plt.savefig('../images/ROC_final.png')
-
-conf_y_true = y_test.values
-conf_y_true_lab = np.where(conf_y_true == 0, 'fertile', 'infertile')
-conf_y_pro = probabilities
-conf_y_pro_lab = np.where(conf_y_pro == 0, 'fertile', 'infertile')
-
+# probs = model_final.predict_proba(X_test_1)[:, 1]
+# probabilities = np.where(probs >= 0.4, 1, 0)
+# probs1 = model_final.predict_proba(X_train_3)[:, 1]
+# probabilities1 = np.where(probs1 >= 0.4, 1, 0)
+#
+# accuracy_final = metrics.accuracy_score(y_test, probabilities)
+# precision_final = metrics.precision_score(y_test, probabilities)
+# recall_final = metrics.recall_score(y_test, probabilities)
+# recall_tr = metrics.recall_score(y_train, probabilities1)
+# f1_score_final = metrics.f1_score(y_test, probabilities)
+#
+# fpr, tpr, thresholds = metrics.roc_curve(y_test, probs)
+# fpr1, tpr1, thresholds1 = metrics.roc_curve(y_train, probs1)
+#
+# auc_final = metrics.roc_auc_score(y_test, probs)
+# auc_train = metrics.roc_auc_score(y_train, probs1)
+#
+# fig = plt.figure(figsize=(10,8))
+# ax = fig.add_subplot(111)
+# ax.plot([0, 1], [0, 1], linestyle='--', lw=2, color='k',
+#          label='Luck')
+# ax.plot(fpr, tpr, color='salmon', lw=2, label='Test Model')
+# ax.plot(fpr1, tpr1, color='navy', lw=2, label='Train Model')
+#
+# ax.set_xlabel("False Positive Rate", fontsize=20)
+# ax.set_ylabel("True Postive Rate", fontsize=20)
+# ax.set_title("ROC curve: Final Model", fontsize=24)
+# ax.text(0.15, 0.65, " ".join(["AUC:",str(auc_final.round(3))]), fontsize=20, color = 'salmon')
+# ax.text(0.15, 0.6, " ".join(['AUC:',str(auc_train.round(3))]), fontsize=20, color = 'navy')
+# ax.legend(fontsize=24)
+#
+# plt.savefig('../images/ROC_final.png')
+#
+# conf_y_true = y_test.values
+# conf_y_true_lab = np.where(conf_y_true == 0, 'fertile', 'infertile')
+# conf_y_pro = probabilities
+# conf_y_pro_lab = np.where(conf_y_pro == 0, 'fertile', 'infertile')
+#
 
 def generate_confusion_matrix(y_test, y_pred, labels, title, filename, show=False):
     cm = metrics.confusion_matrix(y_test, y_pred, labels=labels)
@@ -87,7 +86,7 @@ def generate_confusion_matrix(y_test, y_pred, labels, title, filename, show=Fals
     label = (np.asarray(["{1}\n({0})".format(string, value)
                       for string, value in zip(strings.flatten(),
                                                cm.flatten())])).reshape(2, 2)
-    ax = sns.heatmap(df_cm, annot=label,fmt="", cmap='Pastel1', annot_kws={'size':16},cbar = False)
+    ax = sns.heatmap(df_cm, annot=label,fmt="", cmap='Pastel1', annot_kws={'size':20},cbar = False)
     plt.ylabel("Actual Label", fontsize=14, fontweight='bold')
     plt.xlabel("Predicted Label", fontsize=14, fontweight='bold')
     plt.title(title, fontsize=14, fontweight='bold')
@@ -100,7 +99,7 @@ def generate_confusion_matrix(y_test, y_pred, labels, title, filename, show=Fals
     if show:
         plt.show()
 
-generate_confusion_matrix(conf_y_true_lab, conf_y_pro_lab, labels = ['infertile', 'fertile'], title = "Confusion Matrix of Final Model", filename = '../images/confusion_mat.png', show = False)
+# generate_confusion_matrix(conf_y_true_lab, conf_y_pro_lab, labels = ['infertile', 'fertile'], title = "Confusion Matrix of Final Model", filename = '../images/confusion_mat.png', show = False)
 
 ############ running it on the final holdout:
 
@@ -122,13 +121,13 @@ accuracy_final_holdout = metrics.accuracy_score(y_holdout, probabilities_h)
 precision_final_holdout = metrics.precision_score(y_holdout, probabilities_h)
 recall_final_holdout = metrics.recall_score(y_holdout, probabilities_h)
 f1_score_final_holdout = metrics.f1_score(y_holdout, probabilities_h)
-recall_train = metrics.recall_score(y_train, probabilities1_h)
+recall_train = metrics.recall_score(y, probabilities1_h)
 
 fpr_h, tpr_h, thresholds_h = metrics.roc_curve(y_holdout, probs_h)
-fpr1_h, tpr1_h, thresholds1_h = metrics.roc_curve(y_train, probs1_h)
+fpr1_h, tpr1_h, thresholds1_h = metrics.roc_curve(y, probs1_h)
 
 auc_final_holdout = metrics.roc_auc_score(y_holdout, probs_h)
-auc_train_holdout = metrics.roc_auc_score(y_train, probs1_h)
+auc_train_holdout = metrics.roc_auc_score(y, probs1_h)
 
 fig = plt.figure(figsize=(10,8))
 ax = fig.add_subplot(111)
@@ -153,9 +152,7 @@ conf_y_pro = probabilities_h
 conf_y_pro_lab = np.where(conf_y_pro == 0, 'fertile', 'infertile')
 generate_confusion_matrix(conf_y_true_lab, conf_y_pro_lab, labels = ['infertile', 'fertile'], title = "Confusion Matrix of Final Holdout Data", filename = '../images/confusion_mat_holdout.png', show = False)
 
-print(recall_tr)
 print(recall_train)
-print(recall_final)
 print(recall_final_holdout)
 
 ########## proportional bar chart ############

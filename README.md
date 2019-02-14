@@ -6,14 +6,13 @@
 #### Website: https://github.com/rosiemin/dsi-capstone1
 
 # Background
-Human infertility is a complex disorder that is becoming more prevalent. In 2010, an estimated 48.5 million couples worldwide were unable to have a child after five years of trying to conceive. Worldwide 1 in 6 couples have troubles getting pregnant or sustaining their pregnancy and approximately 6.9 million American women struggle with issues of infertility. According to the National Center for Health Statistics, in the United States 12.1% of women aged 15-44 have impaired fecundity (the ability to have kids) and 6.7% of married women in the same age range are infertile.
+Human infertility is a complex disorder that is becoming more prevalent. In 2010, an estimated 48.5 million couples worldwide were unable to have a child after five years of trying to conceive. Worldwide 1 in 6 couples have trouble getting pregnant or sustaining their pregnancy and approximately 6.9 million American women struggle with issues of infertility. According to the National Center for Health Statistics, in the United States 12.1% of women aged 15-44 have impaired fecundity (the ability to have kids) and 6.7% of married women in the same age range are infertile.
 
 <p align="center">
 <img src="images/fertility.jpg">
 
 [ source](https://www.stanfordchildrens.org/content-public/pdf/national-infertility-week-stanford-childrens.pdf)
 </p>
-
 
 
 Infertility is influenced by a broad range of physical, anatomical, hormonal, genetic and environmental stressors. About 1/3 of infertility is attributed to female issues, 1/3 is attributed to male issues, and 1/3 is attributed to unknown factors. The burden of infertility high and remains an ongoing global reproductive health issue.
@@ -36,8 +35,8 @@ While we infertility is not only a “female” issue, for the purposes of this 
 * Age
 * Race/Ethnicity
 * BMI (body mass index)
-*	Pre-existing thyroid issues, STIs, and pelvic inflammatory disease
-*	Physical activity, based on the CDC’s recommendation (150 min moderate of 75 min of vigorous exercise per week)
+*	Pre-existing hormonal issues, STIs, and pelvic inflammatory disease
+*	Physical activity
 *	Alcohol consumption
 *	Smoking
 *	Irregular periods
@@ -73,37 +72,42 @@ Those participants that said “Yes” to one of either of the two questions are
 <img src="images/flowchart.png" width = 600px>
 </p>
 
+#### How did I choose my test metric?
+1. What is the question at hand?
+2. What are the potential metrics?
 
 ### Final Model Assessment:
 
 ```python
 Coefficients from the final holdout model using Stats Models
                       coef     P>|z|
-Intercept          -4.0289     0.000      
-Age                 0.0595     0.005      
-Alcohol             0.0750     0.164     
-BMI                -0.0116     0.627      
-STI_yes            -0.5830     0.378     
-Irr Periods_yes    -0.9072     0.109      
-Current Smoke       0.0481     0.926    
-Former Smoke        0.7921     0.109     
+Intercept          -5.0404     0.000      
+Age                 0.0394     0.047      
+Alcohol             0.0087     0.881     
+BMI                 0.0513     0.035      
+STI_yes            -0.3440     0.599     
+Irr Periods_yes    -0.1853     0.737      
+Current Smoke      -0.0322     0.949    
+Former Smoke       -0.7065     0.289     
 ```
-Because age is significant, we can look at the exp(0.0595) = 1.06
+Because age and BMI are significant, we can look at the exp(0.0394) = 1.04 (age), and exp(0.0513) = 1.05
 
-** Holding all else constant, on average, with a one year increase in age, the odds increases by 6% among those that are infertile compared to those that are fertile.**
+***Interpretation of age***
+**Holding all else constant, on average, with a one year increase in age, the odds increase by 4% among those that are infertile compared to those that are fertile.**
+
+***Interpretation of BMI***
+
+**Holding all else constant, on average, with a one unit increase in BMI, the odds increase by 5% among those that are infertile compared to those that are fertile.**
 
 <p align="center">
-<img src="images/ROC_final.png" width=400px><img src="images/ROC_holdout.png" width=400px>
+<img src="images/ROC_holdout.png">
 </p>
 
-**The recall from my training model 0.910**
-
-**The recall from my first test 0.893**
-
-**The recall from my final hold out was 0.886**
+* **The recall from my training model 0.906**
+* **The recall from my final hold out was 0.886**
 
 <p align="center">
-<img src="images/confusion_mat.png" width=420px><img src="images/confusion_mat_holdout.png" width=420px>
+<img src="images/confusion_mat_holdout.png">
 </p>
 
 
