@@ -70,7 +70,7 @@ Those participants that said “Yes” to one of either of the two questions are
 
 ### Model Training:
 <p align="center">
-<img src="images/flowchart.png" width=400px>
+<img src="images/flowchart.png">
 </p>
 
 
