@@ -69,6 +69,10 @@ Those participants that said “Yes” to one of either of the two questions are
 </p>
 
 ### Model Training:
+<p align="center">
+<img src="images/flowchart.png" width=400px>
+</p>
+
 
 ### Final Model Assessment:
 
