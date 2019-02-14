@@ -87,7 +87,7 @@ def generate_confusion_matrix(y_test, y_pred, labels, title, filename, show=Fals
     label = (np.asarray(["{1}\n({0})".format(string, value)
                       for string, value in zip(strings.flatten(),
                                                cm.flatten())])).reshape(2, 2)
-    ax = sns.heatmap(df_cm, annot=label,fmt="", cmap='bwr', annot_kws={'size':16},cbar = False)
+    ax = sns.heatmap(df_cm, annot=label,fmt="", cmap='Pastel1', annot_kws={'size':16},cbar = False)
     plt.ylabel("Actual Label", fontsize=14, fontweight='bold')
     plt.xlabel("Predicted Label", fontsize=14, fontweight='bold')
     plt.title(title, fontsize=14, fontweight='bold')
