@@ -56,12 +56,17 @@ Those participants that said “Yes” to one of either of the two questions are
 *note, I'm only showing EDA on those variables I kept in my final model*
 
 #### Continuous Variables: Age, BMI, Alcohol
-![](images/pairplot.png)
-![](images/boxplot_by.png)
+<p align="center">
+<img src="images/pairplot.png" width:500px>
+<img src="images/boxplot_by.png" width: 500px>
+</p>
+
 
 #### Categorical Variables: STIs (yes/no), Irregular Periods (yes/no), Smoking Status (Current/Former/Never)
+<p align="center">
+<img src="images/proportionalcats.png" width: 200px>
+</p>
 
-![](images/proportionalcats.png)
 
 ```python
 Coefs from the final holdout model using Stats Models
