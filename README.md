@@ -67,12 +67,13 @@ Those participants that said “Yes” to one of either of the two questions are
 <img src="images/proportionalcats.png" width: 200px>
 </p>
 
+### Model Training:
+
+### Final Model Assessment:
 
 ```python
-Coefs from the final holdout model using Stats Models
+Coefficients from the final holdout model using Stats Models
                       coef     P>|z|
----------------------------------------------------------------
-
 Intercept          -4.0289     0.000      
 Age                 0.0595     0.005      
 Alcohol             0.0750     0.164     
@@ -85,12 +86,19 @@ Former Smoke        0.7921     0.109
 Because age is significant, we can look at the exp(0.0595) = 1.06
 
 ** Holding all else constant, on average, with a one year increase in age, the odds increases by 6% among those that are infertile compared to those that are fertile.**
+<p align="center">
+<img src="images/ROC_final.png" width:300px><img src="images/ROC_holdout.png" width: 300px>
+</p>
 
-The recall from my training model 0.910
-The recall from my first test 0.893
-The recall from my final hold out was 0.886
+**The recall from my training model 0.910**
 
+**The recall from my first test 0.893**
 
+**The recall from my final hold out was 0.886**
+
+<p align="center">
+<img src="images/confusion_mat.png" width:300px><img src="images/confusion_mat_holdout.png" width: 300px>
+</p>
 
 
 # Discussion
