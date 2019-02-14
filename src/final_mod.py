@@ -176,7 +176,7 @@ proportion_no = np.true_divide(no_, total) * 100
 proportion_yes = np.true_divide(yes_, total) * 100
 proportion_former = np.true_divide(former_, total) * 100
 
-plt.figure(figsize=(15,16))
+plt.figure(figsize=(10,8))
 plt.bar(ind, proportion_former, width=0.8, label='Former Smoker', color='gray', bottom=proportion_no + proportion_yes)
 plt.bar(ind, proportion_yes, width=0.8, label='Yes or Current Smoker', color='salmon', bottom=proportion_no)
 plt.bar(ind, proportion_no, width=0.8, label='No or Never Smoker', color='navy')
