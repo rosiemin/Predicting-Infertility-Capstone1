@@ -80,7 +80,7 @@ conf_y_pro_lab = np.where(conf_y_pro == 0, 'fertile', 'infertile')
 def generate_confusion_matrix(y_test, y_pred, labels, title, filename, show=False):
     cm = metrics.confusion_matrix(y_test, y_pred, labels=labels)
     df_cm = pd.DataFrame(cm, index=labels, columns=labels)
-    plt.figure(figsize=(10,6))
+    plt.figure(figsize=(10,10))
     strings = np.asarray([['TP', 'FN'],
                                     ['FP', 'TN']])
 
