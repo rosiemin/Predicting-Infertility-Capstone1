@@ -68,8 +68,8 @@ def clean_data(df):
 
     df['current'] = df['smq040'].replace({1.0: 'current', 2.0: 'current', 3.0: 'never', np.nan:'never'})
     df['smoke_cur'] = df['smq020'].replace({1.0: "former", 2.0: 'never', np.nan: 'never', 9.0: 'never'})
-    df['smoke'] = np.where(df['current'] == 'never', 'never', 'current')
-    #          (np.where(df['current'] == 'current', 'current', 'former')))
+    df['smoke'] = np.where(df['smoke_cur'] == 'never', 'never', 
+             (np.where(df['current'] == 'current', 'current', 'former')))
     df = df.drop(['smq020', 'smq040','current', 'smoke_cur'], axis = 1)
     #BMI new metric:
     # Reported heights and weights, considered being physiologically implausible or the result of interviewer data entry error, were coded as “missing.”

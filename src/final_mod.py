@@ -13,6 +13,7 @@ import merge_data1516 as md
 import statsmodels.api as sm
 import seaborn as sns
 import itertools
+plt.style.use('ggplot')
 
 
 
