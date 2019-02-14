@@ -105,6 +105,8 @@ Because age is significant, we can look at the exp(0.0595) = 1.06
 
 # Discussion
 
-# Strengths & Limitations
+
 
 # Future Steps
+* Re-do analysis including the other years that NHANES has available (approximately 10 more years worth of data).
+*
