@@ -21,6 +21,7 @@ def clean_data(df):
     # Missing 383 - Best metric, least amount missing, for this, I can impute those missing values as 0, or non-drinkers, the code book specifies that people have put 0 as their number of drinks, but when importing into python, it recodes 0s as NaNs
 
     #For alcohol metric, I will use alq120q as my metric, i will code those as NaNs as 0, as they are missing because they do not drink.
+    # number of days = continuous
     df['alcohol'] = df['alq120q'].fillna(0)
     df = df.drop(['alq130', 'alq141u', 'paq706', 'alq120q'], axis = 1)
 
@@ -67,8 +68,8 @@ def clean_data(df):
 
     df['current'] = df['smq040'].replace({1.0: 'current', 2.0: 'current', 3.0: 'never', np.nan:'never'})
     df['smoke_cur'] = df['smq020'].replace({1.0: "former", 2.0: 'never', np.nan: 'never', 9.0: 'never'})
-    df['smoke'] = np.where(df['smoke_cur'] == 'never', 'never',
-             (np.where(df['current'] == 'current', 'current', 'former')))
+    df['smoke'] = np.where(df['current'] == 'never', 'never', 'current')
+    #          (np.where(df['current'] == 'current', 'current', 'former')))
     df = df.drop(['smq020', 'smq040','current', 'smoke_cur'], axis = 1)
     #BMI new metric:
     # Reported heights and weights, considered being physiologically implausible or the result of interviewer data entry error, were coded as “missing.”

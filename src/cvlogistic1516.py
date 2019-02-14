@@ -12,6 +12,8 @@ from sklearn.model_selection import cross_val_score
 import merge_data1516 as md
 import statsmodels.api as sm
 import seaborn as sns
+from matplotlib import rc
+
 
 
 df, test_df = md.open_data()
@@ -32,7 +34,7 @@ model_sm = sm.Logit(y_train, sm.add_constant(X_train))
 print(model_sm.fit().summary())
 
 
-model = LogisticRegression(class_weight='balanced')
+model = LogisticRegression(class_weight={0:1., 1: 10.})
 model.fit(X_train.values, y_train.values)
 probabilities = model.predict(X_test)#
 probs = model.predict_proba(X_test)[:, 1]
@@ -73,7 +75,7 @@ model_sm_1 = sm.Logit(y_train, sm.add_constant(X_train_1))
 print(model_sm_1.fit().summary())
 
 
-model_1 = LogisticRegression(class_weight='balanced')
+model_1 = LogisticRegression(class_weight={0:1., 1: 10.})
 model_1.fit(X_train_1.values, y_train.values)
 probabilities = model_1.predict(X_test_1)
 probs = model_1.predict_proba(X_test_1)[:, 1]
@@ -114,7 +116,7 @@ model_sm_2 = sm.Logit(y_train, sm.add_constant(X_train_2))
 print(model_sm_2.fit().summary())
 
 
-model_2 = LogisticRegression(class_weight='balanced')
+model_2 = LogisticRegression(class_weight={0:1., 1: 10.})
 model_2.fit(X_train_2.values, y_train.values)
 probabilities = model_2.predict(X_test_2)
 probs = model_2.predict_proba(X_test_2)[:, 1]
@@ -159,7 +161,7 @@ model_sm_3 = sm.Logit(y_train, sm.add_constant(X_train_3))
 print(model_sm_3.fit().summary())
 
 
-model_3 = LogisticRegression(class_weight='balanced')
+model_3 = LogisticRegression(class_weight={0:1., 1: 10.})
 model_3.fit(X_train_3.values, y_train.values)
 probabilities = model_3.predict(X_test_3)
 probs = model_3.predict_proba(X_test_3)[:, 1]
@@ -198,7 +200,7 @@ model_sm_4 = sm.Logit(y_train, sm.add_constant(X_train_4))
 print(model_sm_4.fit().summary())
 
 
-model_4 = LogisticRegression(class_weight='balanced')
+model_4 = LogisticRegression(class_weight={0:1., 1: 10.})
 model_4.fit(X_train_4.values, y_train.values)
 probabilities = model_4.predict(X_test_4)
 probs = model_4.predict_proba(X_test_4)[:, 1]
@@ -236,7 +238,7 @@ model_sm_5 = sm.Logit(y_train, sm.add_constant(X_train_5))
 print(model_sm_5.fit().summary())
 
 
-model_5 = LogisticRegression(class_weight='balanced')
+model_5 = LogisticRegression(class_weight={0:1., 1: 10.})
 model_5.fit(X_train_5.values, y_train.values)
 probabilities = model_5.predict(X_test_5)
 probs = model_5.predict_proba(X_test_5)[:, 1]
@@ -249,7 +251,7 @@ f1_score_5 = metrics.f1_score(y_test, probabilities)
 fpr, tpr, thresholds = metrics.roc_curve(y_test, probs)
 auc_5 = metrics.roc_auc_score(y_test, probs)
 
-df_metrics.loc[len(df_metrics)] = [auc_5, accuracy_5, precision_5, recall_5,f1_score_5, 'age/piv']
+df_metrics.loc[len(df_metrics)] = [auc_5, accuracy_5, precision_5, recall_5,f1_score_5, 'age/piv_classweight']
 
 fig = plt.figure(figsize=(10,8))
 ax = fig.add_subplot(111)
@@ -262,3 +264,7 @@ ax.set_title("ROC curve: only age/piv ", fontsize=24)
 ax.text(0.3, 0.7, " ".join(["AUC:",str(auc_5.round(3))]), fontsize=20)
 ax.legend(fontsize=24)
 plt.savefig('../images/ROC_age_piv.png')
+
+
+
+###### Working on stacked plot #########
