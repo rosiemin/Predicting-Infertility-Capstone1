@@ -49,29 +49,41 @@ For the purposes of this analysis I have excluded women who have had a hysterect
 In the NHANES dataset, there are two questions asked:
 * “Have you/spouse ever attempted to become pregnant over a period of at least a year without becoming pregnant?”
 * “Have you or your spouse ever been to a doctor or other medical provider because you or she has been unable to become pregnant?”
+
 Those participants that said “Yes” to one of either of the two questions are infertile and those that said “No” as fertile.
 
-* From model, age and pelvic inflammatory disease were significant (Stats models)
+### EDA:
+*note, I'm only showing EDA on those variables I kept in my final model*
 
+#### Continuous Variables: Age, BMI, Alcohol
+![](images/pairplot.png)
+![](images/boxplot_by.png)
 
-Coeffs from the final holdout model
-==============================
-                      coef    
------------------------------
-const              -4.9381      
-age                 0.0421      
-alcohol             0.1357      
-bmi                 0.0266     
-sti_yes            -0.2657      
-piv_yes             0.9422      
-irr_periods_yes     0.0356      
-smoke_current      -0.2916     
-smoke_former       -0.4855      
-=============================
+#### Categorical Variables: STIs (yes/no), Irregular Periods (yes/no), Smoking Status (Current/Former/Never)
 
+![](images/proportionalcats.png)
 
-The recall from my first test 0.786
-The recall from my final hold out was 0.743
+```python
+Coefs from the final holdout model using Stats Models
+                      coef     P>|z|
+---------------------------------------------------------------
+
+Intercept          -4.0289     0.000      
+Age                 0.0595     0.005      
+Alcohol             0.0750     0.164     
+BMI                -0.0116     0.627      
+STI_yes            -0.5830     0.378     
+Irr Periods_yes    -0.9072     0.109      
+Current Smoke       0.0481     0.926    
+Former Smoke        0.7921     0.109     
+```
+Because age is significant, we can look at the exp(0.0595) = 1.06
+
+** Holding all else constant, on average, with a one year increase in age, the odds increases by 6% among those that are infertile compared to those that are fertile.**
+
+The recall from my training model 0.910
+The recall from my first test 0.893
+The recall from my final hold out was 0.886
 
 
 
