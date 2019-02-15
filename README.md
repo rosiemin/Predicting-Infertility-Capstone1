@@ -5,6 +5,22 @@
 #### Author: Rosie M Martinez, ScD, MPH
 #### Website: https://github.com/rosiemin/dsi-capstone1
 
+## Table of Contents
+1. [Background](#Background)
+2. [Data](#Data)
+3. [Analysis](#Analysis)
+    * [Outcome Definition](#How-did-I-define-infertility?)
+    * [EDA](#EDA)
+        * [Continuous Variables](#Continuous-Variables:-Age,-BMI,-Alcohol)
+        * [Categorical Variables](#Categorical-Variables)
+3. [High Grade Gliomas](#high-grade-gliomas)
+4. [Convolutional Neural Networks](#convolutional-neural-networks)
+    * [Model Architecture](#model-architecture)
+    * [Training the Model](#training-the-model)  
+    * [Patch Selection](#patch-selection)
+    * [Results](#results)
+5. [Future Directions](#future-directions)
+
 # Background
 Human infertility is a complex disorder that is becoming more prevalent. In 2010, an estimated 48.5 million couples worldwide were unable to have a child after five years of trying to conceive. Worldwide 1 in 6 couples have trouble getting pregnant or sustaining their pregnancy and approximately 6.9 million American women struggle with issues of infertility. According to the National Center for Health Statistics, in the United States 12.1% of women aged 15-44 have impaired fecundity (the ability to have kids) and 6.7% of married women in the same age range are infertile.
 
@@ -19,7 +35,7 @@ Infertility is influenced by a broad range of physical, anatomical, hormonal, ge
 
 The clinical diagnosis of infertility is defined as the failure to conceive within 12 months and affects 7% to 8% of reproductive-aged American women. The American Society for Reproductive Medicine recommends that a woman should consult her physician if she is under 35 years of age and has been trying to conceive for more than 12 months or over 35 years of age and has been trying for 6 or more months.
 
-# Question: Can I predict infertility among women based on self-reported risk factor data?
+## Question: Can I predict infertility among women based on self-reported risk factor data?
 
 # Data
 ![](images/nhanes_logo.png)
@@ -97,13 +113,13 @@ We can we that this is a binary outcome, therefore I will be performing **Logist
 Beyond this, we have to think about the other effects this can have on a couple.Infertility causes several effects in different types of personal health: physical, mental, emotional, psychological, social and even religious, in the couples that suffer from it. It’s one of the most important causes of depression, and its social, psychological and cultural consequences. [ source](https://pdfs.semanticscholar.org/75d6/fa1291e80cb867fd2fa07fc99aea1bbfb43d.pdf)
 
 
-#### Based on this, I chose to reduce my false negatives, therefore I will be looking at recall.
+#### Based on this, I chose to reduce my false negatives, therefore I will be comparing recall between my models.
 
 #### Other choices made from my K-fold CV analysis:
 1. Class weights decided = 'balanced' or in my case 10:1
-  * For every individual that was infertile, they are worth 10 fertile.
+    * For every individual that was infertile, they are worth 10 fertile.
 2. Threshold at which my predicted probabilities were decided = 0.4
-  * Because I wanted to reduce my false negatives, I wanted to allow a few more false positives go by, so instead of having a default threshold of 0.5, I chose a threshold of 0.4.
+    * Because I wanted to reduce my false negatives, I wanted to allow a few more false positives go by, so instead of having a default threshold of 0.5, I chose a threshold of 0.4.
 
 ### Final Model Assessment:
 
