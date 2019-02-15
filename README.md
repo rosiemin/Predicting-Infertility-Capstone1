@@ -19,7 +19,7 @@ Infertility is influenced by a broad range of physical, anatomical, hormonal, ge
 
 The clinical diagnosis of infertility is defined as the failure to conceive within 12 months and affects 7% to 8% of reproductive-aged American women. The American Society for Reproductive Medicine recommends that a woman should consult her physician if she is under 35 years of age and has been trying to conceive for more than 12 months or over 35 years of age and has been trying for 6 or more months.
 
-### Question: Can I predict infertility among women based on self-reported risk factor data?
+## Question: Can I predict infertility among women based on self-reported risk factor data?
 
 # Data
 ![](images/nhanes_logo.png)
@@ -51,6 +51,8 @@ In the NHANES dataset, there are two questions asked:
 * “Have you or your spouse ever been to a doctor or other medical provider because you or she has been unable to become pregnant?”
 
 Those participants that said “Yes” to one of either of the two questions are infertile and those that said “No” as fertile.
+
+
 
 ### EDA:
 *note, I'm only showing EDA on those variables I kept in my final model*

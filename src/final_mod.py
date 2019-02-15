@@ -192,7 +192,7 @@ df_nodum_cont = df_nodum[['fert_stat','age', 'bmi', 'alcohol']]
 df_nodum_cont['Fertility Status'] = np.where(df_nodum_cont['fert_stat']=='no', 'Fertile', 'Infertile')
 df_nodum_cont.drop('fert_stat', inplace = True, axis = 1)
 
-pplot = sns.pairplot(df_nodum_cont, hue = 'Fertility Status', palette={'Fertile':"navy", 'Infertile':"salmon"}, plot_kws={"s": 27, 'alpha': 0.5})
+pplot = sns.pairplot(df_nodum_cont, hue = 'Fertility Status', palette={'Fertile':"navy", 'Infertile':"salmon"}, plot_kws={"s": 27, 'alpha': 0.5}, diag_kind='kde')
 pplot.savefig('../images/pairplot.png')
 
 fig, axs = plt.subplots(ncols=3)
