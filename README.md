@@ -168,7 +168,7 @@ Because age and BMI are significant, we can look at the exp(0.0394) = 1.04 (age)
 * **The recall from my final holdout data: 0.886**
 
 <p align="center">
-<img src="images/confusion_mat_holdout.png" width=700px>
+<img src="images/confusion_mat_holdout_final.png" width=700px>
 </p>
 
 [Back to Top](#Table-of-Contents)
