@@ -14,11 +14,12 @@ def pair_sns(df):
 
 def box_cat_plot(df):
     df_nodum_cont = df[['fert_stat','age', 'bmi', 'alcohol']]
-
+    df_nodum_cont['Fertility Status'] = np.where(df_nodum_cont['fert_stat']=='no', 'Fertile', 'Infertile')
+    df_nodum_cont.drop('fert_stat', inplace = True, axis = 1)
     fig, axs = plt.subplots(ncols=3)
-    sns.boxplot(x = "Fertility Status", y = "age", data = df_nodum_cont, palette={'Fertile':"navy", 'Infertile':"salmon"},boxprops={'alpha':.5}, ax = axs[0]).xaxis.label.set_visible(False)
-    sns.boxplot(x = "Fertility Status", y = "bmi", data = df_nodum_cont,palette={'Fertile':"navy", 'Infertile':"salmon"},boxprops={'alpha':.5}, ax = axs[1]).xaxis.label.set_visible(False)
-    sns.boxplot(x = "Fertility Status", y = "alcohol", data = df_nodum_cont,palette={'Fertile':"navy", 'Infertile':"salmon"},boxprops={'alpha':.5}, ax = axs[2]).xaxis.label.set_visible(False)
+    sns.boxplot(x = "Fertility Status", y = "age", data = df_nodum_cont, palette={'Fertile':"navy", 'Infertile':"salmon"}, ax = axs[0]).xaxis.label.set_visible(False)
+    sns.boxplot(x = "Fertility Status", y = "bmi", data = df_nodum_cont,palette={'Fertile':"navy", 'Infertile':"salmon"}, ax = axs[1]).xaxis.label.set_visible(False)
+    sns.boxplot(x = "Fertility Status", y = "alcohol", data = df_nodum_cont,palette={'Fertile':"navy", 'Infertile':"salmon"}, ax = axs[2]).xaxis.label.set_visible(False)
     plt.xlabel("Fertility Status")
     plt.tight_layout()
 
