@@ -96,7 +96,7 @@ We can we that this is a binary outcome, therefore I will be performing **Logist
 
 ### Model Training:
 <p align="center">̨
-<img src="images/flowchart.png" width=600px>
+<img src="images/flowchart.png" width=500px>
 </p>
 
 #### How did I choose my test metric?
