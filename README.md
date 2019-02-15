@@ -9,17 +9,17 @@
 1. [Background](#Background)
 2. [Data](#Data)
 3. [Analysis](#Analysis)
-    * [Outcome Definition](#How-did-I-define-infertility?)
-    * [EDA](#EDA)
-        * [Continuous Variables](#Continuous-Variables:-Age,-BMI,-Alcohol)
-        * [Categorical Variables](#Categorical-Variables)
-3. [High Grade Gliomas](#high-grade-gliomas)
-4. [Convolutional Neural Networks](#convolutional-neural-networks)
-    * [Model Architecture](#model-architecture)
-    * [Training the Model](#training-the-model)  
-    * [Patch Selection](#patch-selection)
-    * [Results](#results)
-5. [Future Directions](#future-directions)
+    * [Outcome Definition](####How-did-I-define-infertility?)
+    * [EDA](###EDA)
+        * [Continuous Variables](####Continuous-Variables:-Age,-BMI,-Alcohol)
+        * [Categorical Variables](####Categorical-Variables)
+    * [Model Training](###model-training)
+        * [How did I choose my test metric?](####How-did-I-choose-my-test-metric?)
+    * [Final Model Assessment](###Final-Model-Assessment)
+4. [Discussion](#discussion)
+    * [Take Away](###Take-Away)
+    * [Final Thoughts](###final-thoughts)  
+    * [Future-steps](###future-steps)
 
 # Background
 Human infertility is a complex disorder that is becoming more prevalent. In 2010, an estimated 48.5 million couples worldwide were unable to have a child after five years of trying to conceive. Worldwide 1 in 6 couples have trouble getting pregnant or sustaining their pregnancy and approximately 6.9 million American women struggle with issues of infertility. According to the National Center for Health Statistics, in the United States 12.1% of women aged 15-44 have impaired fecundity (the ability to have kids) and 6.7% of married women in the same age range are infertile.
@@ -169,6 +169,6 @@ What can we take away from this analysis? Based on the above analysis, the proba
 * I was able to make sure that during my test-train splits and during my k-fold, I preserved the proportions of my outcome. Therefore if I observed 10% infertile in my overall dataset, after a test train split, I would still have 10% infertile in my train set and 10% infertile in my test set. The same goes for my k-fold splits.
 
 
-# Future Steps
+### Future Steps
 * Re-do analysis including the other years that NHANES has available (approximately 10 more years worth of data).
 *
