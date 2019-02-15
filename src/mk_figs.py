@@ -2,6 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
+from sklearn import metrics
+from matplotlib.colors import LinearSegmentedColormap
+
 
 def pair_sns(df):
     df_nodum_cont['Fertility Status'] = np.where(df_nodum_cont['fert_stat']=='no', 'Fertile', 'Infertile')
@@ -74,6 +77,20 @@ def ROC_c(fpr, tpr, fpr1, tpr1, auc, auc1):
 
     plt.savefig('../images/ROC_holdout.png')
 
+colors = ['#00112b','#f6695f','#f6695f','#f6695f','#f6695f','#f6695f','#f6695f','#f6695f','#00112b']
+
+boundaries = [0.0, 0.3,0.7, 1.0]  # custom boundaries
+
+# here I generated twice as many colors,
+# so that I could prune the boundaries more clearly
+# hex_colors = sns.light_palette('navy', n_colors=len(boundaries) * 2 + 2, as_cmap=False).as_hex()
+# hex_colors = [hex_colors[i] for i in range(0, len(hex_colors), 2)]
+custom_color_map = LinearSegmentedColormap.from_list(
+    name='custom_plt',
+    colors=colors,)
+# p = sns.palplot(sns.color_palette(colors, n_colors=5))
+
+
 def generate_confusion_matrix(y_test, y_pred, labels, title, filename, show=False):
     cm = metrics.confusion_matrix(y_test, y_pred, labels=labels)
     df_cm = pd.DataFrame(cm, index=labels, columns=labels)
@@ -84,12 +101,12 @@ def generate_confusion_matrix(y_test, y_pred, labels, title, filename, show=Fals
     label = (np.asarray(["{1}\n({0})".format(string, value)
                       for string, value in zip(strings.flatten(),
                                                cm.flatten())])).reshape(2, 2)
-    ax = sns.heatmap(df_cm, annot=label,fmt="", cmap='Pastel1', annot_kws={'size':20},cbar = False)
+    ax = sns.heatmap(df_cm, annot=label,fmt="", cmap=custom_color_map, annot_kws={'size':20},cbar = False)
     plt.ylabel("Actual Label", fontsize=14, fontweight='bold')
     plt.xlabel("Predicted Label", fontsize=14, fontweight='bold')
     plt.title(title, fontsize=14, fontweight='bold')
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
     ttl = ax.title
     ttl.set_position([0.5, 1.03])
     plt.savefig(filename)
