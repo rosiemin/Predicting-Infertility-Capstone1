@@ -47,7 +47,7 @@ The National Health and Nutrition Examination Survey, or NHANES as it is better 
 
 While we infertility is not only a “female” issue, for the purposes of this capstone, I will be focusing on infertility among women. In this data, there are many different datasets based on questionnaires given, but I will be focusing my project on those questions dealing with the known risk factors of infertility, including
 <p align="center">
-<img src="images/riskfactors.png" width=500px>
+<img src="images/risk_factors.png" width=500px>
 </p>
 
 * Age
