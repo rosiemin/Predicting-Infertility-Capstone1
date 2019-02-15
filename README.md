@@ -52,10 +52,10 @@ In the NHANES dataset, there are two questions asked:
 
 Those participants that said “Yes” to one of either of the two questions are infertile and those that said “No” as fertile.
 
-|  	| Training Count 	| Training %	| Test Count | Test % | Overall Count | Overall %
-|-------------------	|-------	|------------	| -----| ------|-----
-| Infertile (Y = 1) 	| 139 	| 11% 	| 25 | 11% | 174 | 11%
-| Fertile (Y = 0) 	| 1125 	| 89% 	| 282 | 89% | 1407 | 89%
+|  	| Training Count 	| Training %	| Test Count | Test % | Overall Count | Overall %|
+|-------------------	|-------	|------------	| -----| ------|-----|
+| Infertile (Y = 1) 	| 139 	| 11% 	| 25 | 11% | 174 | 11%|
+| Fertile (Y = 0) 	| 1125 	| 89% 	| 282 | 89% | 1407 | 89%|
 
 We can we that this is a binary outcome, therefore I will be performing **Logistic Regression** with fertility status as the outcome.
 
