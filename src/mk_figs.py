@@ -77,7 +77,7 @@ def ROC_c(fpr, tpr, fpr1, tpr1, auc, auc1):
 
     plt.savefig('../images/ROC_holdout.png')
 
-colors = ['#00112b','#f6695f','#f6695f','#f6695f','#f6695f','#f6695f','#f6695f','#f6695f','#00112b']
+colors = ['#08006d','#f6695f','#f6695f','#f6695f','#f6695f','#f6695f','#f6695f','#f6695f','#08006d']
 
 boundaries = [0.0, 0.3,0.7, 1.0]  # custom boundaries
 
