@@ -19,7 +19,7 @@ Infertility is influenced by a broad range of physical, anatomical, hormonal, ge
 
 The clinical diagnosis of infertility is defined as the failure to conceive within 12 months and affects 7% to 8% of reproductive-aged American women. The American Society for Reproductive Medicine recommends that a woman should consult her physician if she is under 35 years of age and has been trying to conceive for more than 12 months or over 35 years of age and has been trying for 6 or more months.
 
-## Question: Can I predict infertility among women based on self-reported risk factor data?
+# Question: Can I predict infertility among women based on self-reported risk factor data?
 
 # Data
 ![](images/nhanes_logo.png)
@@ -52,10 +52,17 @@ In the NHANES dataset, there are two questions asked:
 
 Those participants that said “Yes” to one of either of the two questions are infertile and those that said “No” as fertile.
 
+|  	| Training Count 	| Training %	| Test Count | Test % | Overall Count | Overall %
+|-------------------	|-------	|------------	| -----| ------|-----
+| Infertile (Y = 1) 	| 139 	| 11% 	| 25 | 11% | 174 | 11%
+| Fertile (Y = 0) 	| 1125 	| 89% 	| 282 | 89% | 1407 | 89%
 
+We can we that this is a binary outcome, therefore I will be performing **Logistic Regression** with fertility status as the outcome.
+
+*note: This data is subject to class imbalance*
 
 ### EDA:
-*note, I'm only showing EDA on those variables I kept in my final model*
+*note: I'm only showing EDA on those variables I kept in my final model*
 
 #### Continuous Variables: Age, BMI, Alcohol
 <p align="center">
@@ -70,18 +77,39 @@ Those participants that said “Yes” to one of either of the two questions are
 </p>
 
 ### Model Training:
-<p align="center">
-<img src="images/flowchart.png" width = 600px>
+<p align="center">̨
+<img src="images/flowchart.png">
 </p>
 
 #### How did I choose my test metric?
 1. What is the question at hand?
 2. What are the potential metrics?
 
+
+|  	| Recall (TP/TP+FN) 	| Precision (TP/TP+FP) 	|
+|------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| Pros 	|  Minimizes my false negatives (Telling someone they are fertile when actually they are infertile) 	| Minimizes my false positives (Telling someone they are infertile when actually they are fertile) 	|
+|  	| When thinking about the emotional/monetary/and time a couple might spend and on top of that, not actually being able to concieve, it seems best to minimize false negatives 	| Potentially could reduce the amount of money going into tests 	|
+| Cons 	| Most likely my false positives will take a hit and we will be having a lot more type 1 error 	| Assuming we are in a population of people who want to have kids, if we are minimizing the false positives, we aren’t necessarily minimizing the false negatives, so it will take more of a toll on couples if they think they are fertile but in fact they aren’t. This is especially true in those couples who are older and are already at risk of infertility. 	|
+|  	| If a person wants to be more liberal with their knowledge of being “infertile” they might have a fun surprise waiting for them. 	| Most likely my false positives will take a hit and we will be having a lot more type 1 error 	|                                                                                                                                                                                            	|
+
+
+Beyond this, we have to think about the other effects this can have on a couple.Infertility causes several effects in different types of personal health: physical, mental, emotional, psychological, social and even religious, in the couples that suffer from it. It’s one of the most important causes of depression, and its social, psychological and cultural consequences. [ source](https://pdfs.semanticscholar.org/75d6/fa1291e80cb867fd2fa07fc99aea1bbfb43d.pdf)
+
+
+#### Based on this, I chose to reduce my false negatives, therefore I will be looking at recall.
+
+#### Other choices made from my K-fold CV analysis:
+1. Class weights decided = 'balanced' or in my case 10:1
+  * For every individual that was infertile, they are worth 10 fertile.
+2. Threshold at which my predicted probabilities were decided = 0.4
+  * Because I wanted to reduce my false negatives, I wanted to allow a few more false positives go by, so instead of having a default threshold of 0.5, I chose a threshold of 0.4.
+
 ### Final Model Assessment:
 
 ```python
 Coefficients from the final holdout model using Stats Models
+*Note, this does not take into account my chosen class weights or threshold previously mentioned*
                       coef     P>|z|
 Intercept          -5.0404     0.000      
 Age                 0.0394     0.047      
@@ -95,6 +123,7 @@ Former Smoke       -0.7065     0.289
 Because age and BMI are significant, we can look at the exp(0.0394) = 1.04 (age), and exp(0.0513) = 1.05
 
 ***Interpretation of age***
+
 **Holding all else constant, on average, with a one year increase in age, the odds increase by 4% among those that are infertile compared to those that are fertile.**
 
 ***Interpretation of BMI***
@@ -102,19 +131,26 @@ Because age and BMI are significant, we can look at the exp(0.0394) = 1.04 (age)
 **Holding all else constant, on average, with a one unit increase in BMI, the odds increase by 5% among those that are infertile compared to those that are fertile.**
 
 <p align="center">
-<img src="images/ROC_holdout.png">
+<img src="images/ROC_holdout.png" width=700px>
 </p>
 
-* **The recall from my training model 0.906**
-* **The recall from my final hold out was 0.886**
+* **The recall from my training data: 0.906**
+* **The recall from my final holdout data: 0.886**
 
 <p align="center">
-<img src="images/confusion_mat_holdout.png">
+<img src="images/confusion_mat_holdout.png" width=700px>
 </p>
 
 
 # Discussion
 
+### Take Away:
+What can we take away from this analysis? Based on the above analysis, the probability that my model could correctly predict those individuals that were actually infertile was 0.886. That is, the model was retrieving the infertile individuals that should have been infertile.
+
+### Final thoughts:
+* If I examine any of the specific beta coefficients from my model (performed by stats models not sklearn), I can that age and bmi increase with an infertile outcome compared to fertile outcome. While these make sense, many of the other predictors do not, for instance, I would have expected a history of STIs, irregular periods, increase smoking intensity would have higher odds among the infertile group compare to the fertile group, but my model is not telling me this.
+* I do have class imbalance in this analysis (only ~10% infertile), while I try to combat this by weighting my classes (Y = 1 vs Y = 0) differently. In an ideal situation, I would have a 50/50 split of my weights so I could correctly predict without having to bias my outcome variable.
+* I was able to make sure that during my test-train splits and during my k-fold, I preserved the proportions of my outcome. Therefore if I observed 10% infertile in my overall dataset, after a test train split, I would still have 10% infertile in my train set and 10% infertile in my test set. The same goes for my k-fold splits.
 
 
 # Future Steps

@@ -91,7 +91,7 @@ def generate_confusion_matrix(y_test, y_pred, labels, title, filename, show=Fals
     plt.xlabel("Predicted Label", fontsize=14, fontweight='bold')
     plt.title(title, fontsize=14, fontweight='bold')
     plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
+    plt.yticks(fontsize=14)̨
     ttl = ax.title
     ttl.set_position([0.5, 1.03])
     plt.savefig(filename)
@@ -174,16 +174,16 @@ proportion_yes = np.true_divide(yes_, total) * 100
 proportion_former = np.true_divide(former_, total) * 100
 
 plt.figure(figsize=(10,8))
-plt.bar(ind, proportion_former, width=0.6, label='Former Smoker', color='gray', bottom=proportion_no + proportion_yes)
-plt.bar(ind, proportion_yes, width=0.6, label='Yes or Current Smoker', color='salmon', bottom=proportion_no)
-plt.bar(ind, proportion_no, width=0.6, label='No or Never Smoker', color='navy')
+plt.bar(ind, proportion_former, width=0.6, label='Former', color='gray', bottom=proportion_no + proportion_yes)
+plt.bar(ind, proportion_yes, width=0.6, label='Yes', color='salmon', bottom=proportion_no)
+plt.bar(ind, proportion_no, width=0.6, label='No', color='navy')
 
 plt.xticks(ind, x_var, fontsize = 14)
 plt.ylabel("Percent (%)", fontsize = 16)
 plt.xlabel("Categorical Parameters", fontsize = 16)
 plt.title("Proportional Percent of Categorical Parameters in Training Data", fontsize = 14)
 plt.ylim=1.0
-plt.legend(loc='upper center', bbox_to_anchor=(1, -0.034))
+plt.legend(loc='upper center', bbox_to_anchor=(1.03, -0.020))
 
 plt.savefig('../images/proportionalcats.png')
 
