@@ -9,17 +9,17 @@
 1. [Background](#Background)
 2. [Data](#Data)
 3. [Analysis](#Analysis)
-    * [Outcome Definition](####How-did-I-define-infertility?)
+    * [Outcome Definition](#How-did-I-define-infertility?)
     * [EDA](###EDA)
-        * [Continuous Variables](####Continuous-Variables:-Age,-BMI,-Alcohol)
-        * [Categorical Variables](####Categorical-Variables)
-    * [Model Training](###model-training)
-        * [How did I choose my test metric?](####How-did-I-choose-my-test-metric?)
-    * [Final Model Assessment](###Final-Model-Assessment)
+        * [Continuous Variables](#Continuous-Variables)
+        * [Categorical Variables](#Categorical-Variables)
+    * [Model Training](#model-training)
+        * [How did I choose my test metric?](#How-did-I-choose-my-test-metric)
+    * [Final Model Assessment](#Final-Model-Assessment)
 4. [Discussion](#discussion)
-    * [Take Away](###Take-Away)
-    * [Final Thoughts](###final-thoughts)  
-    * [Future-steps](###future-steps)
+    * [Take Away](#Take-Away)
+    * [Final Thoughts](#final-thoughts)  
+    * [Future-steps](#future-steps)
 
 # Background
 Human infertility is a complex disorder that is becoming more prevalent. In 2010, an estimated 48.5 million couples worldwide were unable to have a child after five years of trying to conceive. Worldwide 1 in 6 couples have trouble getting pregnant or sustaining their pregnancy and approximately 6.9 million American women struggle with issues of infertility. According to the National Center for Health Statistics, in the United States 12.1% of women aged 15-44 have impaired fecundity (the ability to have kids) and 6.7% of married women in the same age range are infertile.
@@ -80,14 +80,16 @@ We can we that this is a binary outcome, therefore I will be performing **Logist
 ### EDA:
 *note: I'm only showing EDA on those variables I kept in my final model*
 
-#### Continuous Variables: Age, BMI, Alcohol
+#### Continuous Variables:
+**Age, BMI, Alcohol**
 <p align="center">
 <img src="images/pairplot.png" width=600px>
 <img src="images/boxplot_by.png" width=600px>
 </p>
 
 
-#### Categorical Variables: STIs (yes/no), Irregular Periods (yes/no), Smoking Status (Current/Former/Never)
+#### Categorical Variables:
+**STIs (yes/no), Irregular Periods (yes/no), Smoking Status (Current/Former/Never)**
 <p align="center">
 <img src="images/proportionalcats.png" width=600px>
 </p>
