@@ -35,6 +35,8 @@ Infertility is influenced by a broad range of physical, anatomical, hormonal, ge
 
 The clinical diagnosis of infertility is defined as the failure to conceive within 12 months and affects 7% to 8% of reproductive-aged American women. The American Society for Reproductive Medicine recommends that a woman should consult her physician if she is under 35 years of age and has been trying to conceive for more than 12 months or over 35 years of age and has been trying for 6 or more months.
 
+[Back to Top](#Table-of-Contents)
+
 ## Question: Can I predict infertility among women based on self-reported risk factor data?
 
 # Data
@@ -59,6 +61,8 @@ While we infertility is not only a “female” issue, for the purposes of this 
 
 For the purposes of this analysis I have excluded women who have had a hysterectomy, or have had uterine, cervical, or ovarian cancer.
 
+[Back to Top](#Table-of-Contents)
+
 # Analysis
 
 #### How did I define infertility?
@@ -76,6 +80,8 @@ Those participants that said “Yes” to one of either of the two questions are
 We can we that this is a binary outcome, therefore I will be performing **Logistic Regression** with fertility status as the outcome.
 
 *note: This data is subject to class imbalance*
+
+[Back to Top](#Table-of-Contents)
 
 ### EDA:
 *note: I'm only showing EDA on those variables I kept in my final model*
@@ -123,6 +129,8 @@ Beyond this, we have to think about the other effects this can have on a couple.
 2. Threshold at which my predicted probabilities were decided = 0.4
     * Because I wanted to reduce my false negatives, I wanted to allow a few more false positives go by, so instead of having a default threshold of 0.5, I chose a threshold of 0.4.
 
+[Back to Top](#Table-of-Contents)
+
 ### Final Model Assessment:
 
 ```python
@@ -159,6 +167,7 @@ Because age and BMI are significant, we can look at the exp(0.0394) = 1.04 (age)
 <img src="images/confusion_mat_holdout.png" width=700px>
 </p>
 
+[Back to Top](#Table-of-Contents)
 
 # Discussion
 
@@ -177,5 +186,7 @@ What can we take away from this analysis? Based on the above analysis, the proba
 * Ideally getting real-world data on whether or not an individual is infertile based on a medical diagnosis rather than self-reported data.
 * Continue to improve the model, there might be risk factors that I'm not including in this model or that were not available to me that might influence infertility more.
 
+[Back to Top](#Table-of-Contents)
 
-Acknowledgements: Thanks to the NHANES database provided by Center for Disease Control and Prevention and the National Center for Health Statistics
+
+Acknowledgements: Thanks to the NHANES database provided by Center for Disease Control and Prevention and the National Center for Health Statistics [NHANES Website](https://www.cdc.gov/nchs/nhanes/index.htm)
