@@ -4,6 +4,7 @@
 
 #### Author: Rosie M Martinez, ScD, MPH
 #### Website: https://github.com/rosiemin/dsi-capstone1
+*Last update: 2/15/2019*
 ***
 ## Table of Contents
 1. [Background](#Background)
