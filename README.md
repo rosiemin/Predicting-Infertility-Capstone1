@@ -4,7 +4,7 @@
 
 #### Author: Rosie M Martinez, ScD, MPH
 #### Website: https://github.com/rosiemin/dsi-capstone1
-
+***
 ## Table of Contents
 1. [Background](#Background)
 2. [Data](#Data)
@@ -169,8 +169,13 @@ What can we take away from this analysis? Based on the above analysis, the proba
 * If I examine any of the specific beta coefficients from my model (performed by stats models not sklearn), I can that age and bmi increase with an infertile outcome compared to fertile outcome. While these make sense, many of the other predictors do not, for instance, I would have expected a history of STIs, irregular periods, increase smoking intensity would have higher odds among the infertile group compare to the fertile group, but my model is not telling me this.
 * I do have class imbalance in this analysis (only ~10% infertile), while I try to combat this by weighting my classes (Y = 1 vs Y = 0) differently. In an ideal situation, I would have a 50/50 split of my weights so I could correctly predict without having to bias my outcome variable.
 * I was able to make sure that during my test-train splits and during my k-fold, I preserved the proportions of my outcome. Therefore if I observed 10% infertile in my overall dataset, after a test train split, I would still have 10% infertile in my train set and 10% infertile in my test set. The same goes for my k-fold splits.
+* This data is mainly all self-reported, so these results may be subject to recall bias or mis-classification. The best scenario is that I am dealing with non-differential misclassification, therefore biasing my results towards the null, but in reality, I might have run into differential misclassification which could bias my results in either direction.
 
 
 ### Future Steps
-* Re-do analysis including the other years that NHANES has available (approximately 10 more years worth of data).
-*
+* Re-do analysis including the other years that NHANES has available (approximately 10 more years worth of data). This will allow me to increase my sample size, which could, in turn, improve my power to detect
+* Ideally getting real-world data on whether or not an individual is infertile based on a medical diagnosis rather than self-reported data.
+* Continue to improve the model, there might be risk factors that I'm not including in this model or that were not available to me that might influence infertility more.
+
+
+Acknowledgements: Thanks to the NHANES database provided by Center for Disease Control and Prevention and the National Center for Health Statistics
