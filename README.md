@@ -93,6 +93,7 @@ We can we that this is a binary outcome, therefore I will be performing **Logist
 <img src="images/boxplot_by.png" width=600px>
 </p>
 
+[Back to Top](#Table-of-Contents)
 
 #### Categorical Variables:
 **STIs (yes/no), Irregular Periods (yes/no), Smoking Status (Current/Former/Never)**
@@ -100,10 +101,13 @@ We can we that this is a binary outcome, therefore I will be performing **Logist
 <img src="images/proportionalcats.png" width=600px>
 </p>
 
+[Back to Top](#Table-of-Contents)
+
 ### Model Training:
 <p align="center">̨
 <img src="images/flowchart.png" width=500px>
 </p>
+
 
 #### How did I choose my test metric?
 1. What is the question at hand?
