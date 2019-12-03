@@ -87,7 +87,7 @@ boundaries = [0.0, 0.3,0.7, 1.0]  # custom boundaries
 # hex_colors = [hex_colors[i] for i in range(0, len(hex_colors), 2)]
 custom_color_map = LinearSegmentedColormap.from_list(
     name='custom_plt',
-    colors=colors,)
+    colors=colors)
 # p = sns.palplot(sns.color_palette(colors, n_colors=5))
 
 
